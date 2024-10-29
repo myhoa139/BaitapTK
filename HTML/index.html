@@ -24,118 +24,6 @@
         height: fit-content !important;
     }
 </style>
-<script>
-    $(document).ready(function(){
-        //câu a
-        let sttCounter = 2;
-        $('#btnDK').on('click',function(){
-            $('#myModal').modal('show');
-        });
-        //câu b
-        $('#txtMa').on('blur', function(){
-            const ma = $(this).val();
-            const regexMa = /^K16-\d{9}$/;
-            if (!regexMa.test (ma)) {
-                $('#tbMa').text('Mã không hợp lệ, đúng mẫu: K16-xxxxxxxxx');
-            } else {
-                $('#tbMa').text('*');
-            }
-        });
-        //câu c
-        $('#txtHT').on('blur', function(){
-            const ten = $(this).val();
-            const regexTen = /^[A-Z][a-z]*([ ][A-Z][a-z]*)+$/;
-            if (!regexTen.test (ten)) {
-                $('#tbTen').text('Tên không hợp lệ');
-            } else {
-                $('#tbTen').text('*');
-            }
-        });
-        // câu d
-        $('#txtDV').on('blur', function() {
-        const lop = $(this).val();
-        const regexLop = /^[A-Z0-9]{11}$/;
-        if (!regexLop.test(lop)) {
-            $('#tbLop').text('Lớp không hợp lệ, đúng mẫu: DHKTPM16BTT');
-        } else {
-            $('#tbLop').text('*');
-        }
-    });
-    // câu e
-    $('.txtDD').on('blur', function() {
-        const ngayThamGia = new Date($(this).val());
-        const ngayHienTai = new Date();
-        ngayHienTai.setDate(ngayHienTai.getDate() + 30); // Ngày hiện tại + 30 ngày
-
-        if (ngayThamGia <= ngayHienTai) {
-            $('#tbNgay').text('Ngày tham gia phải sau ngày hiện tại 30 ngày');
-        } else {
-            $('#tbNgay').text('*');
-        }
-    });
-        // câu f
-        $('.txtTel').on('blur', function() {
-        const tel = $(this).val();
-        const regexTel = /^0\d{3}-\d{3}-\d{3}$/;
-        if (!regexTel.test(tel)) {
-            $('#tbTel').text('SDT không hợp lệ, đúng mẫu: 0xxx-xxx-xxx');
-        } else {
-            $('#tbTel').text('*');
-        }
-    });
-        //câu g
-        $('#txtDC').on('blur', function() {
-        const email = $(this).val();
-        const regexEmail = /^[a-zA-Z0-9._%+-]+@iuh\.edu\.vn$/;
-        if (!regexEmail.test(email)) {
-            $('#tbEmail').text('Email không hợp lệ, đúng mẫu: xxxxx@iuh.edu.vn');
-        } else {
-            $('#tbEmail').text('*');
-            }
-        });
-        //câu h
-$('#btnSave').on('click', function() {
-    if (
-        $('#tbMa').text() === '*' &&
-        $('#tbTen').text() === '*' &&
-        $('#tbLop').text() === '*' &&
-        $('#tbNgay').text() === '*' &&
-        $('#tbTel').text() === '*' &&
-        $('#tbEmail').text() === '*'
-    ) {
-        const newRow = `
-            <tr>
-                <td>${sttCounter++}</td>
-                <td>${$('#txtMa').val()}</td>
-                <td>${$('#txtHT').val()}</td>
-                <td>${$('#txtDV').val()}</td>
-                <td>${$('#txtDD').val()}</td>
-                <td>${$('#txttell').val()}</td>
-                <td>${$('#txtDC').val()}</td>
-            </tr>
-        `;
-        $('#tbDanhSach').append(newRow);
-        
-        $('#myModal').modal('hide');
-        $('#txtMa').val('');
-        $('#txtHT').val('');
-        $('#txtDV').val('');
-        $('#txtDD').val('');
-        $('#txttell').val('');
-        $('#txtDC').val('');
-        $('#tbMa').text('*');
-        $('#tbTen').text('*');
-        $('#tbLop').text('*');
-        $('#tbNgay').text('*');
-        $('#tbTel').text('*');
-        $('#tbEmail').text('*');
-    } else {
-        alert('Vui lòng nhập đầy đủ và đúng các trường thông tin!');
-    }
-});
-
-    })
-</script>
 <body>
     <div class="container border">
         <div class="row">
@@ -281,4 +169,116 @@ $('#btnSave').on('click', function() {
         </div>
     </div>
 </body>
+<script>
+    $(document).ready(function(){
+        //câu a
+        let sttCounter = 2;
+        $('#btnDK').on('click',function(){
+            $('#myModal').modal('show');
+        });
+        //câu b
+        $('#txtMa').on('blur', function(){
+            const ma = $(this).val();
+            const regexMa = /^K16-\d{9}$/;
+            if (!regexMa.test (ma)) {
+                $('#tbMa').text('Mã không hợp lệ, đúng mẫu: K16-xxxxxxxxx');
+            } else {
+                $('#tbMa').text('*');
+            }
+        });
+        //câu c
+        $('#txtHT').on('blur', function(){
+            const ten = $(this).val();
+            const regexTen = /^[A-Z][a-z]*([ ][A-Z][a-z]*)+$/;
+            if (!regexTen.test (ten)) {
+                $('#tbTen').text('Tên không hợp lệ');
+            } else {
+                $('#tbTen').text('*');
+            }
+        });
+        // câu d
+        $('#txtDV').on('blur', function() {
+        const lop = $(this).val();
+        const regexLop = /^[A-Z0-9]{11}$/;
+        if (!regexLop.test(lop)) {
+            $('#tbLop').text('Lớp không hợp lệ, đúng mẫu: DHKTPM16BTT');
+        } else {
+            $('#tbLop').text('*');
+        }
+    });
+    // câu e
+    $('.txtDD').on('blur', function() {
+        const ngayThamGia = new Date($(this).val());
+        const ngayHienTai = new Date();
+        ngayHienTai.setDate(ngayHienTai.getDate() + 30); // Ngày hiện tại + 30 ngày
+
+        if (ngayThamGia <= ngayHienTai) {
+            $('#tbNgay').text('Ngày tham gia phải sau ngày hiện tại 30 ngày');
+        } else {
+            $('#tbNgay').text('*');
+        }
+    });
+        // câu f
+        $('.txtTel').on('blur', function() {
+        const tel = $(this).val();
+        const regexTel = /^0\d{3}-\d{3}-\d{3}$/;
+        if (!regexTel.test(tel)) {
+            $('#tbTel').text('SDT không hợp lệ, đúng mẫu: 0xxx-xxx-xxx');
+        } else {
+            $('#tbTel').text('*');
+        }
+    });
+        //câu g
+        $('#txtDC').on('blur', function() {
+        const email = $(this).val();
+        const regexEmail = /^[a-zA-Z0-9._%+-]+@iuh\.edu\.vn$/;
+        if (!regexEmail.test(email)) {
+            $('#tbEmail').text('Email không hợp lệ, đúng mẫu: xxxxx@iuh.edu.vn');
+        } else {
+            $('#tbEmail').text('*');
+            }
+        });
+        //câu h
+$('#btnSave').on('click', function() {
+    if (
+        $('#tbMa').text() === '*' &&
+        $('#tbTen').text() === '*' &&
+        $('#tbLop').text() === '*' &&
+        $('#tbNgay').text() === '*' &&
+        $('#tbTel').text() === '*' &&
+        $('#tbEmail').text() === '*'
+    ) {
+        const newRow = `
+            <tr>
+                <td>${sttCounter++}</td>
+                <td>${$('#txtMa').val()}</td>
+                <td>${$('#txtHT').val()}</td>
+                <td>${$('#txtDV').val()}</td>
+                <td>${$('#txtDD').val()}</td>
+                <td>${$('#txttell').val()}</td>
+                <td>${$('#txtDC').val()}</td>
+            </tr>
+        `;
+        $('#tbDanhSach').append(newRow);
+        
+        $('#myModal').modal('hide');
+        $('#txtMa').val('');
+        $('#txtHT').val('');
+        $('#txtDV').val('');
+        $('#txtDD').val('');
+        $('#txttell').val('');
+        $('#txtDC').val('');
+        $('#tbMa').text('*');
+        $('#tbTen').text('*');
+        $('#tbLop').text('*');
+        $('#tbNgay').text('*');
+        $('#tbTel').text('*');
+        $('#tbEmail').text('*');
+    } else {
+        alert('Vui lòng nhập đầy đủ và đúng các trường thông tin!');
+    }
+});
+
+    })
+</script>
 </html>
